@@ -20,6 +20,14 @@ HEADERS = {
     "Content-Type": "application/json"
 }
 
+@app.route("/", methods=["GET"])
+def home():
+    return "✅ FormClue AI backend is live!"
+
+@app.route("/favicon.ico")
+def favicon():
+    return "", 204  # Respond with no content
+
 @app.route("/suggest", methods=["POST"])
 def suggest_answer():
     try:
@@ -31,13 +39,12 @@ def suggest_answer():
 
         # Build prompt for generic suggestions
         prompt = (
-    f"The user is filling out a Google Form. The question is:\n"
-    f"'{question}'\n"
-    "Respond with a short placeholder-style answer. "
-    "For example, say 'Enter your name' instead of giving a real name, or 'Enter your email address' instead of a random email. "
-    "Do not use actual values like 'John Doe' or '123 Main St'. Only return placeholder-like responses."
-)
-
+            f"The user is filling out a Google Form. The question is:\n"
+            f"'{question}'\n"
+            "Respond with a short placeholder-style answer. "
+            "For example, say 'Enter your name' instead of giving a real name, or 'Enter your email address' instead of a random email. "
+            "Do not use actual values like 'John Doe' or '123 Main St'. Only return placeholder-like responses."
+        )
 
         payload = {
             "model": "openai/gpt-3.5-turbo",
@@ -59,5 +66,4 @@ def suggest_answer():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))  # Use Render's assigned port
-    app.run(host="0.0.0.0", port=port, debug=True)
+    app.run(port=5000, debug=True)
