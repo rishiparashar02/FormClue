@@ -1,4 +1,4 @@
-const backendURL = "https://formclue-backend.onrender.com/suggest";
+const backendURL = "https://formclue-backend.onrender.com/";
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -13,7 +13,7 @@ async function processQuestions() {
     if (!questionText || container.querySelector(".ai-suggestion")) continue;
 
     try {
-      const res = await fetch(BACKEND_URL, {
+      const res = await fetch(backendURL + "suggest", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
