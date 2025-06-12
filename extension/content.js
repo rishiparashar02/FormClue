@@ -26,6 +26,16 @@ async function processQuestions() {
 
       const suggestionDiv = document.createElement("div");
       suggestionDiv.className = "ai-suggestion";
+      suggestionDiv.style = `
+        margin-top: 8px;
+        font-style: italic;
+        font-size: 0.9em;
+        color: #2e7d32;
+        background-color: #e8f5e9;
+        padding: 6px 10px;
+        border-left: 4px solid #81c784;
+        border-radius: 4px;
+      `;
       suggestionDiv.textContent = `💡 AI Suggestion: ${suggestion}`;
 
       const labelContainer = labelEl.closest(".m2") || labelEl.parentElement;
