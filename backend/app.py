@@ -34,8 +34,6 @@ def suggest_answer():
     f"The user is filling out a Google Form. The question is:\n"
     f"'{question}'\n"
     "Respond with a short placeholder-style answer. "
-    "For example, say 'Enter your name' instead of giving a real name, or 'Enter your email address' instead of a random email. "
-    "Do not use actual values like 'John Doe' or '123 Main St'. Only return placeholder-like responses."
 )
 
 
