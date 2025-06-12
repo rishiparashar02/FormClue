@@ -29,8 +29,18 @@ def suggest_answer():
         if not question:
             return jsonify({"error": "Empty question received"}), 400
 
+        # Build prompt for generic suggestions
+        prompt = (
+    f"The user is filling out a Google Form. The question is:\n"
+)
+
+
         payload = {
             "model": "openai/gpt-3.5-turbo",
+            "messages": [
+                {"role": "system", "content": "You are an assistant that helps users by suggesting generic answers for Google Forms."},
+                {"role": "user", "content": prompt}
+            ]
         }
 
         response = requests.post(OPENROUTER_URL, headers=HEADERS, json=payload, timeout=15)
