@@ -33,7 +33,7 @@ def suggest_answer():
         prompt = (
     f"The user is filling out a Google Form. The question is:\n"
     f"'{question}'\n"
-    "Respond with a short placeholder-style answer. "
+    "Respond with a shrot and crisp answer that is suitable for a Google Form response.\n"
 )
 
 
